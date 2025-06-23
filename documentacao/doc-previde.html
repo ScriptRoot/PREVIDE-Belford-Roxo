@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documentação PREVIDE</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="#visao-geral">Visão Geral</a></li>
+        <li><a href="#ad">1. Controlador de Domínio (AD)</a></li>
+        <li><a href="#arquivos">2. Servidor de Arquivos</a></li>
+        <li><a href="#transferencia">3. Servidor de Transferência</a></li>
+        <li><a href="#ISS">4. Servidor Web Interno</a></li>
+        <li><a href="#spark">5. Sistema de Comunicação Interna</a></li>
+        <li><a href="#transferencia">6. Proxy e Controle de Acesso à Internet</a></li>
+        <li><a href="#firewall">7. Segurança de Rede</a></li>
+        <li><a href="#backup">8. Backup e Recuperação de Dados</a></li>
+        <li><a href="#script">9. Scripts e Automações</a></li>
+      </ul>
+      <hr>
+    </aside>
+
+    <main class="content">
+      <header id="visao-geral">
+        <h1>📚 Documentação Técnica - PREVIDE</h1>
+      </header><br>
+
+      <section>
+        <h2>Visão Geral</h2>
+        <p>Este documento reúne de forma organizada todas as informações sobre a infraestrutura de TI utilizada no Instituto PREVIDE. 
+          Nele, estão descritos os servidores implementados, os serviços configurados, sistemas em uso, integrações internas, políticas 
+          de segurança, rotinas de backup e outras soluções desenvolvidas para garantir o funcionamento seguro, eficiente e centralizado 
+          da rede interna.</p>
+          <p>É uma referência técnica destinada a administradores de sistema, equipe de TI e gestores, servindo tanto para consultas operacionais 
+            quanto para manutenções futuras e auditorias.</p>
+        <p>A infraestrutura do PREVIDE foi atualizada para oferecer mais segurança, organização e praticidade. Agora, os usuários acessam os 
+          sistemas de forma centralizada, com mais controle e automações. Tudo isso é possível graças à integração de servidores Windows e Linux, 
+          que trabalham juntos para garantir eficiência e estabilidade.</p>
+          <ul><h3>Tarefas desempenhadas por esta documentação:</h3>
+          <ul>
+            <li>Centraliza e padroniza as informações técnicas da TI.</li>
+            <li>Auxilia na continuidade operacional em caso de trocas de equipe.</li>
+            <li>Suporta auditorias internas e externas com dados precisos.</li>
+            <li>Facilita manutenções e atualizações estruturais.</li>
+          </ul>
+          <h3>Vantagens:</h3>
+          <ul>
+            <li>Melhora a governança e transparência da área de TI.</li>
+            <li>Agiliza o suporte e a resolução de problemas.</li>
+            <li>Reduz dependência de conhecimento tácito.</li>
+            <li>Contribui para a segurança da informação e conformidade técnica.</li>
+          </ul></ul>
+      </section>
+
+      <section id="ad">
+        <h2>Controlador de Domínio (Active Directory - Windows Server)</h2>
+        <p>O controlador de domínio é o serviço central que gerencia a autenticação de usuários e dispositivos na rede interna do PREVIDE. 
+          Ele permite que todos os colaboradores utilizem credenciais únicas de login, garantindo segurança, rastreabilidade e controle de acesso.</p>
+          <p>Além disso, o Active Directory aplica políticas de grupo (GPOs) que padronizam configurações de segurança, permissões em pastas de rede, mapeamento automático de unidades e definições do ambiente de trabalho dos usuários. Essa centralização facilita a administração da rede e a aplicação de regras corporativas em todos os dispositivos conectados ao domínio.</p>
+          <h3>Tarefas desempenhadas por ele:</h3>
+          <ul>
+            <li>Centraliza o login de todos os usuários (Single Sign-On).</li>
+            <li>Garante políticas de segurança por meio do Group Policy (GPO).</li>
+            <li>Controla permissões de acesso a arquivos e sistemas.</li>
+            <li>Integra com o OpenFire (Spark) para login automático via conta de rede.</li>
+          </ul>
+          <h3>Vantagens:</h3>
+          <ul>
+            <li>Organização e segurança na gestão de contas.</li>
+            <li>Redução de erros humanos por conta da centralização.</li>
+            <li>Melhora a escalabilidade da rede.</li>
+          </ul>
+      </section>
+
+      <section id="arquivos">
+        <h2>Servidor de Arquivos (Fileserver)</h2>
+        <p>O servidor de arquivos é responsável pelo armazenamento, organização e controle de acesso aos documentos institucionais. 
+          Os arquivos estão divididos por setores (RH, Financeiro, Jurídico, etc.), com permissões específicas atribuídas via AD, permitindo 
+          acesso apenas a quem realmente precisa.</p>
+          <p>Esse servidor conta com rotinas de backup automático, monitoramento de uso e estruturação lógica das pastas, o que facilita a 
+            localização de arquivos e melhora a produtividade dos usuários.</p>
+            <h3>Tarefas desempenhadas por ele:</h3>
+            <ul>
+              <li>Armazena e organiza os arquivos da instituição.</li>
+              <li>Controla o acesso por setor e usuário.</li>
+              <li>Permite compartilhamento seguro de documentos.</li>
+              <li>Gera base para backup automatizado.</li>
+            </ul>
+            <h3>Vantagens:</h3>
+            <ul>
+              <li>Organização eficiente dos dados.</li>
+              <li>Redução de riscos de perda de informações.</li>
+              <li>Facilidade de manutenção e restauração.</li>
+            </ul>
+      </section>
+
+      <section id="transferencia">
+        <h2>Servidor de Transferência de Arquivos (Temporário)</h2>
+        <p>Esse servidor atua como uma área de trânsito para envio e recebimento de arquivos entre setores. Ele permite o compartilhamento de arquivos 
+          que não precisam ser mantidos permanentemente, otimizando o espaço e evitando acúmulos indevidos no servidor principal.</p>
+          <P>Além disso, conta com rotinas de limpeza periódica e controle de acesso, garantindo o uso adequado do recurso.</p>
+            <h3>Tarefas desempenhadas por ele:</h3>
+            <ul>
+              <li>Facilita a troca temporária de arquivos entre setores.</li>
+              <li>Evita o uso de e-mails ou pendrives internos.</li>
+              <li>Controla o tempo de permanência dos arquivos.</li>
+            </ul>
+            <h3>Vantagens:</h3>
+            <ul>
+              <li>Agilidade na comunicação entre setores.</li>
+              <li>Redução de riscos com dispositivos externos.</li>
+              <li>Organização e limpeza automatizada.</li>
+            </ul>
+      </section>
+
+      <section id="ISS">
+        <h2>Servidor Web Interno (Intranet - IIS)</h2>
+        <p>O servidor web interno hospeda o portal da intranet da PREVIDE, desenvolvido para centralizar o acesso aos sistemas e serviços 
+          utilizados diariamente pelos servidores. A página inicial é moderna, leve, responsiva e apresenta links diretos para sistemas como 
+          arquivos, Spark, painéis administrativos e suporte técnico</p>
+          <p>A intranet é acessível via endereço amigável http://previde.intra dentro da rede, facilitando a navegação e organização do ambiente institucional.</p>
+          <h3>Tarefas desempenhadas por ele:</h3>
+          <ul>
+            <li>Hospeda o portal interno com links e atalhos.</li>
+            <li>Organiza visualmente os serviços utilizados.</li>
+            <li>Fornece acesso rápido aos sistemas.</li>
+          </ul>
+          <h3>Vantagens:</h3>
+          <ul>
+            <li>Navegação centralizada e amigável.</li>
+            <li>Redução de dúvidas sobre onde acessar cada sistema.</li>
+            <li>Visual profissional e responsivo.</li>
+          </ul>
+      </section>
+
+      <section id="spark">
+        <h2>Sistema de Comunicação Interna (OpenFire + Spark)</h2>
+        <p>O sistema de mensagens internas utiliza o servidor OpenFire e o cliente Spark para fornecer uma plataforma de comunicação direta 
+          entre os colaboradores do PREVIDE. A autenticação é integrada ao Active Directory, permitindo login automático com as credenciais da rede.</p>
+          <p>Os usuários são organizados por grupos de setor e podem trocar mensagens de forma segura e eficiente, com histórico e conversas privadas.</p>
+          <h3>Tarefas desempenhadas por ele:</h3>
+          <ul>
+            <li>Permite comunicação instantânea entre setores.</li>
+            <li>Organiza usuários em grupos de trabalho.</li>
+            <li>Integra com o AD para login automático.</li>
+          </ul>
+          <h3>Vantagens:</h3>
+          <ul>
+            <li>Agilidade na comunicação interna.</li>
+            <li>Redução do uso de e-mails para recados rápidos.</li>
+            <li>Controle e segurança na troca de mensagens.</li>
+          </ul>
+      </section>
+
+      <section id="squid">
+        <h2>Proxy e Controle de Acesso à Internet (Squid + AD)</h2>
+        <p>Em fase de implementação, o serviço de proxy com Squid permitirá o monitoramento e o controle da navegação na internet pelos 
+          colaboradores. A integração com o Active Directory permitirá a aplicação de regras específicas por usuário, grupo ou setor.</p>
+          <P>Além disso, o sistema permite o cache de conteúdos acessados frequentemente, melhorando o desempenho e a velocidade da rede.</P>
+          <h3>Tarefas desempenhadas por ele:</h3>
+          <ul>
+            <li>Controla o acesso à internet por setor/usuário.</li>
+            <li>Registra logs de navegação.</li>
+            <li>Aplica filtros por categoria e horário.</li>
+          </ul>
+          <h3>Vantagens:</h3>
+          <ul>
+            <li>Mais segurança e produtividade.</li>
+            <li>Redução de consumo de banda.</li>
+            <li>Maior controle e rastreabilidade.</li>
+          </ul>
+      </section>
+
+      <section id="firewall">
+        <h2>Segurança de Rede (Firewall pfSense + Windows Firewall)</h2>
+        <p>A segurança da rede é garantida por uma camada dupla: o firewall pfSense atua como a principal barreira na borda da rede, 
+          enquanto o firewall do Windows Server reforça a proteção nas máquinas internas.</p>
+          <p>O pfSense permite criar regras de entrada e saída, NAT, controle de banda, VPN e monitoramento de tráfego. 
+            Já o firewall do Windows é controlado por GPOs, garantindo que todas as máquinas da rede obedeçam às regras definidas.</p>
+            <h3>Tarefas desempenhadas por ele:</h3>
+            <ul>
+              <li>Controlam o tráfego interno e externo da rede.</li>
+              <li>Protegem servidores e estações contra invasões.</li>
+              <li>Segmentam o acesso por serviços e portas.</li>
+            </ul>
+            <h3>Vantagens:</h3>
+            <ul>
+              <li>Camadas de proteção robustas.</li>
+              <li>Controle completo sobre a comunicação de rede.</li>
+              <li>Flexibilidade para expansão futura.</li>
+            </ul>
+      </section>
+
+      <section id="backup">
+        <h2>Backup e Recuperação de Dados</h2>
+        <p>Todos os servidores críticos possuem rotinas de backup automatizadas diárias e semanais. Os arquivos são armazenados em volumes 
+          criptografados e replicados, garantindo a integridade e confidencialidade das informações.</p>
+          <p>Testes semestrais são realizados para verificar a efetividade dos procedimentos de restauração, 
+            assegurando que os dados possam ser recuperados com sucesso em caso de incidentes.</p>
+            <h3>Tarefas desempenhadas por ele:</h3>
+            <ul>
+              <li>Realiza backup periódico dos servidores.</li>
+              <li>Protege os dados contra falhas e perda.</li>
+              <li>Permite testes de restauração programados.</li>
+            </ul>
+            <h3>Vantagens:</h3>
+            <ul>
+              <li>Redução do risco de perda de dados.</li>
+              <li>Garantia de continuidade operacional.</li>
+              <li>Conformidade com boas práticas de TI.</li>
+            </ul>
+      </section>
+
+      <section id="script">
+        <h2>Scripts e Automações (Shell, Batch, VBS)</h2>
+        <p>Diversos scripts foram desenvolvidos para padronizar e automatizar atividades comuns dentro do ambiente do PREVIDE. 
+          Isso inclui a criação de atalhos personalizados, troca de wallpaper, mapeamento de unidades de rede e instalação de programas.</p>
+          <p>Essas automações reduzem o tempo de configuração de novos dispositivos, padronizam o ambiente dos usuários e minimizam erros operacionais.</p>
+            <h3>Tarefas desempenhadas por ele:</h3>
+            <ul>
+              <li>Automatizam tarefas administrativas.</li>
+              <li>Criam atalhos e mapeamentos personalizados.</li>
+              <li>Padronizam configurações de estações.</li>
+            </ul>
+            <h3>Vantagens:</h3>
+            <ul>
+              <li>Agilidade no suporte técnico.</li>
+              <li>Redução de erros humanos.</li>
+              <li>Facilidade na manutenção da rede</li>
+            </ul>
+      </section>
+
+      <footer>
+        <p>&copy; 2025 PREVIDE - Desenvolvido por Leandro Vezu</p>
+      </footer>
+    </main>
+  </div>
+  <script src="css/apps.js"></script>
+</body>
+</html>

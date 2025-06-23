@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  text-align: center;
+}
+
+header {
+  background-color: #004080;
+  color: white;
+  padding: 2rem 1rem;
+}
+header h1 {
+  font-weight: 600;
+}
+header h3 {
+  font-weight: normal;
+  font-style: italic;
+  font-size: large;
+  line-height: 5px;
+}
+header p {
+  font-size: 15px;
+  padding-left: 15%;
+  text-align: left;
+  margin: 3px;
+}
+
+main {
+  font-weight: bold;
+  flex: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/*======================== 
+      Estilo do cartão 
+ =========================*/
+.card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2rem 1rem;
+  text-decoration: none;
+  color: #004080;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card i {
+  font-size: 25px;
+  margin-bottom: 1rem;
+}
+
+.card:hover {
+  background-color: #004080;
+  color: white;
+  transform: scale(1.05);
+}
+
+/*============ 
+    rodapé 
+ =============*/
+ footer {
+  background: #004080;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+}
